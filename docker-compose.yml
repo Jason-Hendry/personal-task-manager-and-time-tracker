@@ -1,0 +1,8 @@
+node:
+  build: .
+  volumes:
+    - .:/app
+ruby:
+  build: ruby
+  volumes:
+    - .:/app

@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Personal Daily Sprint Manager",
+  "description": "Task Manager and Pomodoro Timer",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "200px-Check_font_awesome.svg.png",
+    "default_popup": "app/index.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}

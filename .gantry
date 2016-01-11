@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Dev Install and Watch
+function devSetup() {
+    docker-compose run node bower install -y --allow-root
+    docker-compose run -d ruby sass --watch Resources/sass/app.sass:app/app.css
+}
