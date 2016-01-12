@@ -1,15 +1,20 @@
 <div class="container-fluid">
     <div class="col-sm-6">
-        <ul>
-            <li>9:00</li>
-            <li>9:30</li>
-            <li>10:00</li>
+        <input class="form-control" type="text" my-enter="addToSlot" placeholder="Add Task Directly">
+        <ul class="tasks" ui-sortable="sortableOptions" ng-model="timeslots">
+            <li ng-repeat="slot in timeslots track by $index">
+                <input type="checkbox" ng-bind="slot.completed"> {{ slot.time|date:'hh:mm a' }} - {{ slot.item }}
+                <i class="action" ng-click="moveToBacklog(slot)">-</i>
+            </li>
         </ul>
     </div>
     <div class="col-sm-6">
-        <ul>
-            <li>Email: From Liouse <strong>Questions</strong></li>
-            <li>JIRA: FVIO Remove Registration</li>
+        <input class="form-control" type="text" my-enter="addToBacklog" placeholder="Add Task to Backlog">
+        <ul class="backlog" ui-sortable ng-model="backlog">
+            <li ng-repeat="item in backlog track by $index">{{ item }}
+                <i class="action" ng-click="addToDay(item)">+</i>
+                <i class="action" ng-click="removeItem(item)">x</i>
+            </li>
         </ul>
     </div>
 </div>
