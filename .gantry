@@ -10,3 +10,8 @@ function devSetup() {
 function install() {
     docker-compose run node bower install -y --allow-root
 }
+
+# [options] - run bower (options)
+function bower() {
+    docker-compose run node bower --allow-root $@
+}

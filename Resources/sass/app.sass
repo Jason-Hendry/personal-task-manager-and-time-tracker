@@ -1,6 +1,9 @@
 body
   width: 768px
-  min-height: 600px
+  min-height: 750px
+
+.main-window
+  overflow: scroll
 
 .menu
   list-style: none
@@ -26,19 +29,37 @@ body
   padding: 0
 
 .tasks,.backlog
-  margin: 4px 0 0 0
+  margin: 2px 0 0 0
   padding: 0
   li
     margin: 0
     padding: 0
     list-style: none
-    line-height: 26px
+    line-height: 20px
+    display: block
+    white-space: nowrap
+    overflow: hidden
     &:hover
       background: #e6e6e6
+
+.tasks
+  li
+    .item
+      width: 80%
+      display: inline-block
+      overflow: hidden
+
+.backlog
+  li
+    span
+      width: 80%
+      display: inline-block
+      overflow: hidden
 
 i.action
   background: #cccccc
   border-radius: 4px
-  padding: 3px 8px
+  padding: 0px 4px
+  margin: 0 0 0 2px
   float: right
   line-height: 18px
