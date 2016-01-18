@@ -4,8 +4,14 @@
         <ul class="backlog" ui-sortable ng-model="backlog">
             <li ng-repeat="item in backlog track by $index">
                 <span title="{{item}}">{{ item }}</span>
-                <i class="action" ng-click="addToDay(item)">+</i>
-                <i class="action" ng-click="removeItem(item)">x</i>
+                <div class="dropdown pull-right">
+                    <button type="button" class="btn btn-xs btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="addToDay(item)"><i class="fa fa-arrow-right"></i> Add to Tasks</a></li>
+                        <li><a ng-click="removeItem(item)"><i class="fa fa-close"></i> Remove</a></li>
+                    </ul>
             </li>
         </ul>
     </div>
@@ -17,16 +23,17 @@
                     <input type="checkbox" ng-model="slot.completed">
                     {{ slot.time|date:'hh:mm a' }} -
                     <input ng-if="slot.edit" ng-model="slot.item" ng-blur="slot.edit=false">
-                    <span title="{{slot.item}}" ng-if="!slot.edit" ng-click="slot.edit=true">{{ slot.item }}</span></div>
-                    <div class="dropdown pull-right">
-                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li ng-click="duplicate(slot)"><i class="fa fa-clone"></i> Duplicate Task</li>
-                            <li ng-click="moveToBacklog(slot)"><i class="fa fa-arrow-left"></i> Move to Backlog</li>
-                        </ul>
-                    </div>
+                    <span title="{{slot.item}}" ng-if="!slot.edit" ng-click="slot.edit=true">{{ slot.item }}</span>
+                </div>
+                <div class="dropdown pull-right">
+                    <button type="button" class="btn btn-xs btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="duplicate(slot)"><i class="fa fa-clone"></i> Duplicate Task</a></li>
+                        <li><a ng-click="moveToBacklog(slot)"><i class="fa fa-arrow-left"></i> Move to Backlog</a></li>
+                    </ul>
+                </div>
             </li>
         </ul>
         <input class="form-control" type="text" ng-model="startTime" placeholder="Start Time">

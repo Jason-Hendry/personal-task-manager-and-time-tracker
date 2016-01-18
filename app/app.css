@@ -31,7 +31,7 @@ body {
 .tasks, .backlog {
   margin: 2px 0 0 0;
   padding: 0; }
-  .tasks li, .backlog li {
+  .tasks > li, .backlog > li {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -43,9 +43,9 @@ body {
     flex-wrap: nowrap;
     align-items: flex-start;
     align-content: center; }
-    .tasks li:hover, .backlog li:hover {
+    .tasks > li:hover, .backlog > li:hover {
       background: #e6e6e6; }
-    .tasks li > span, .tasks li .item, .backlog li > span, .backlog li .item {
+    .tasks > li > span, .tasks > li .item, .backlog > li > span, .backlog > li .item {
       flex-grow: 1;
       flex-shrink: 1;
       flex-basis: 80%;
@@ -53,6 +53,8 @@ body {
   .tasks .dropdown, .backlog .dropdown {
     flex-grow: 0;
     flex-shrink: 0; }
+  .tasks .fa, .backlog .fa {
+    margin: 3px; }
 
 i.action {
   background: #cccccc;
