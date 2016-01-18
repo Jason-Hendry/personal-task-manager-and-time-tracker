@@ -51,18 +51,20 @@ angular.module('myApp.view1', ['ngRoute'])
             return $scope.startTime.split(':')[1];
         };
         $scope.newDay = function() {
-            for (var i=0;i<$scope.timeslots.length;) {
-                if (!$scope.timeslots.hasOwnProperty(i)) {
-                    continue;
+            if(confirm('This will clear all completed tasks and reset times for non-completed tasks. Are you sure?')) {
+                for (var i = 0; i < $scope.timeslots.length;) {
+                    if (!$scope.timeslots.hasOwnProperty(i)) {
+                        continue;
+                    }
+                    var s = $scope.timeslots[i];
+                    if (s.completed) {
+                        $scope.timeslots.splice(i, 1);
+                    } else {
+                        i++;
+                    }
                 }
-                var s=$scope.timeslots[i];
-                if(s.completed) {
-                    $scope.timeslots.splice(i, 1);
-                } else {
-                    i++;
-                }
+                $scope.redoTimes();
             }
-            $scope.redoTimes();
         };
         $scope.redoTimes = function () {
             var startTime = new Date();

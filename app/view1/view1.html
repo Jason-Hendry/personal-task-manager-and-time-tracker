@@ -1,22 +1,5 @@
 <div class="container-fluid">
     <div class="col-sm-6">
-        <input class="form-control" type="text" my-enter="addToSlot" placeholder="Add Task Directly">
-        <ul class="tasks" ui-sortable="sortableOptions" ng-model="timeslots">
-            <li ng-repeat="slot in timeslots track by $index">
-                <div class="item">
-                    <input type="checkbox" ng-model="slot.completed">
-                    {{ slot.time|date:'hh:mm a' }} -
-                    <input ng-if="slot.edit" ng-model="slot.item" ng-blur="slot.edit=false">
-                    <span title="{{slot.item}}" ng-if="!slot.edit" ng-click="slot.edit=true">{{ slot.item }}</span></div>
-                <i class="action" ng-click="duplicate(slot)">+</i>
-                <i class="action" ng-click="moveToBacklog(slot)">-</i>
-            </li>
-        </ul>
-        <input class="form-control" type="text" ng-model="startTime" placeholder="Start Time">
-        <textarea class="form-control" ng-model="export"></textarea>
-        <input role="button" type="button" class="btn btn-danger" value="New Day" ng-click="newDay()">
-    </div>
-    <div class="col-sm-6">
         <input class="form-control" type="text" my-enter="addToBacklog" placeholder="Add Task to Backlog">
         <ul class="backlog" ui-sortable ng-model="backlog">
             <li ng-repeat="item in backlog track by $index">
@@ -25,6 +8,30 @@
                 <i class="action" ng-click="removeItem(item)">x</i>
             </li>
         </ul>
+    </div>
+    <div class="col-sm-6">
+        <input class="form-control" type="text" my-enter="addToSlot" placeholder="Add Task Directly">
+        <ul class="tasks" ui-sortable="sortableOptions" ng-model="timeslots">
+            <li ng-repeat="slot in timeslots track by $index">
+                <div class="item">
+                    <input type="checkbox" ng-model="slot.completed">
+                    {{ slot.time|date:'hh:mm a' }} -
+                    <input ng-if="slot.edit" ng-model="slot.item" ng-blur="slot.edit=false">
+                    <span title="{{slot.item}}" ng-if="!slot.edit" ng-click="slot.edit=true">{{ slot.item }}</span></div>
+                    <div class="dropdown pull-right">
+                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li ng-click="duplicate(slot)"><i class="fa fa-clone"></i> Duplicate Task</li>
+                            <li ng-click="moveToBacklog(slot)"><i class="fa fa-arrow-left"></i> Move to Backlog</li>
+                        </ul>
+                    </div>
+            </li>
+        </ul>
+        <input class="form-control" type="text" ng-model="startTime" placeholder="Start Time">
+        <textarea class="form-control" ng-model="export"></textarea>
+        <input role="button" type="button" class="btn btn-danger" value="New Day" ng-click="newDay()">
     </div>
 </div>
 
